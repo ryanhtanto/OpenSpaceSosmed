@@ -17,7 +17,8 @@
     },
     "plugins": [
         "react",
-        "react-hooks"
+        "react-hooks",
+        "react-redux"
     ],
     "rules": {
         "linebreak-style": "off",
