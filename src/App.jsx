@@ -14,7 +14,7 @@ function App() {
   const {
     authUser = null,
     isPreload = false,
-  } = useSelector((states) => states);
+  } = useSelector((states) => states); // @TODO: get authUser and isPreLoad state from store
 
   const dispatch = useDispatch(); // @TODO: get dispatch function from store
 

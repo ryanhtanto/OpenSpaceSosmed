@@ -1,4 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+/**
+ * @TODO: Create Redux store
+ */
 import { configureStore } from '@reduxjs/toolkit';
 import authUserReducer from './authUser/reducer';
 import isPreloadReducer from './isPreload/reducer';

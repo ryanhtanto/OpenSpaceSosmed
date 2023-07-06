@@ -1,4 +1,7 @@
-import api from '../../utils/api';
+/**
+ * @TODO: Define all the actions (creator) for the talkDetail state
+ */
+import API from '../../utils/api';
 
 const ActionType = {
   RECEIVE_TALK_DETAIL: 'RECEIVE_TALK_DETAIL',
@@ -34,7 +37,7 @@ function asyncReceiveTalkDetail(talkId) {
   return async (dispatch) => {
     dispatch(clearTalkDetailActionCreator());
     try {
-      const talkDetail = await api.getTalkDetail(talkId);
+      const talkDetail = await API.getTalkDetail(talkId);
       dispatch(receiveTalkDetailActionCreator(talkDetail));
     } catch (error) {
       alert(error.message);
@@ -48,7 +51,7 @@ function asyncToogleLikeTalkDetail() {
     dispatch(toggleLikeTalkDetailActionCreator(authUser.id));
 
     try {
-      await api.toggleLikeTalk(talkDetail.id);
+      await API.toggleLikeTalk(talkDetail.id);
     } catch (error) {
       alert(error.message);
     }

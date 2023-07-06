@@ -1,4 +1,7 @@
-import api from '../../utils/api';
+/**
+ * @TODO: Define all the actions (creator) for the isPreLoad state
+ */
+import API from '../../utils/api';
 import { setAuthUserActionCreator } from '../authUser/action';
 
 const ActionType = {
@@ -18,7 +21,7 @@ function asyncPreloadProcess() {
   return async (dispatch) => {
     try {
       // preload process
-      const authUser = await api.getOwnProfile();
+      const authUser = await API.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
       // fallback process

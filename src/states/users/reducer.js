@@ -1,3 +1,6 @@
+/**
+ * @TODO: Define reducer for the users state
+ */
 import { ActionType } from './action';
 
 function usersReducer(users = [], action = {}) {

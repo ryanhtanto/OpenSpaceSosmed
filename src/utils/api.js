@@ -1,6 +1,10 @@
 const api = (() => {
   const BASE_URL = 'https://openspace-api.netlify.app/v1';
 
+  function getAccessToken() {
+    return localStorage.getItem('accessToken');
+  }
+
   async function _fetchWithAuth(url, options = {}) {
     return fetch(url, {
       ...options,
@@ -13,10 +17,6 @@ const api = (() => {
 
   function putAccessToken(token) {
     localStorage.setItem('accessToken', token);
-  }
-
-  function getAccessToken() {
-    return localStorage.getItem('accessToken');
   }
 
   async function register({ id, name, password }) {

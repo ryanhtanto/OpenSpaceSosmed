@@ -1,4 +1,7 @@
-import api from '../../utils/api';
+/**
+ * @TODO: Define all the actions (creator) for the authUser state untuk login dan logout
+ */
+import API from '../../utils/api';
 
 const ActionType = {
   SET_AUTH_USER: 'SET_AUTH_USER',
@@ -26,9 +29,9 @@ function unsetAuthUserActionCreator() {
 function asyncSetAuthUser({ id, password }) {
   return async (dispatch) => {
     try {
-      const token = await api.login({ id, password });
-      api.putAccessToken(token);
-      const authUser = await api.getOwnProfile();
+      const token = await API.login({ id, password });
+      API.putAccessToken(token);
+      const authUser = await API.getOwnProfile();
 
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
@@ -40,7 +43,7 @@ function asyncSetAuthUser({ id, password }) {
 function asyncUnsetAuthUser() {
   return (dispatch) => {
     dispatch(unsetAuthUserActionCreator());
-    api.putAccessToken('');
+    API.putAccessToken('');
   };
 }
 

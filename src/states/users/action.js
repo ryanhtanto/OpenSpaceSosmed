@@ -1,10 +1,13 @@
-import api from '../../utils/api';
+/**
+ * @TODO: Define all the actions (creator) for the users state (register)
+ */
+import API from '../../utils/api';
 
 const ActionType = {
   RECEIVE_USERS: 'RECEIVE_USERS',
 };
 
-function receiveUsersActionCreator(users) {
+function setUserActionCreator(users) {
   return {
     type: ActionType.RECEIVE_USERS,
     payload: {
@@ -16,7 +19,7 @@ function receiveUsersActionCreator(users) {
 function asyncRegisterUser({ id, name, password }) {
   return async () => {
     try {
-      await api.register({ id, name, password });
+      await API.register({ id, name, password });
     } catch (error) {
       alert(error.message);
     }
@@ -25,6 +28,6 @@ function asyncRegisterUser({ id, name, password }) {
 
 export {
   ActionType,
-  receiveUsersActionCreator,
+  setUserActionCreator,
   asyncRegisterUser,
 };

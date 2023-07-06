@@ -1,4 +1,7 @@
-import api from '../../utils/api';
+/**
+ * @TODO: Define all the actions (creator) for the talks state
+ */
+import API from '../../utils/api';
 
 const ActionType = {
   RECEIVE_TALKS: 'RECEIVE_TALKS',
@@ -6,7 +9,7 @@ const ActionType = {
   TOGGLE_LIKE_TALK: 'TOGGLE_LIKE_TALK',
 };
 
-function receiveTalksActionCreator(talks) {
+function receiveTalks(talks) {
   return {
     type: ActionType.RECEIVE_TALKS,
     payload: {
@@ -15,7 +18,7 @@ function receiveTalksActionCreator(talks) {
   };
 }
 
-function addTalkActionCreator(talk) {
+function addTalk(talk) {
   return {
     type: ActionType.ADD_TALK,
     payload: {
@@ -24,7 +27,7 @@ function addTalkActionCreator(talk) {
   };
 }
 
-function toggleLikeTalkActionCreator({ talkId, userId }) {
+function toggleTalk({ talkId, userId }) {
   return {
     type: ActionType.TOGGLE_LIKE_TALK,
     payload: {
@@ -37,8 +40,8 @@ function toggleLikeTalkActionCreator({ talkId, userId }) {
 function asyncAddTalk({ text, replyTo = '' }) {
   return async (dispatch) => {
     try {
-      const talk = await api.createTalk({ text, replyTo });
-      dispatch(addTalkActionCreator(talk));
+      const talk = await API.createTalk({ text, replyTo });
+      dispatch(addTalk(talk));
     } catch (error) {
       alert(error.message);
     }
@@ -48,22 +51,22 @@ function asyncAddTalk({ text, replyTo = '' }) {
 function asyncToogleLikeTalk(talkId) {
   return async (dispatch, getState) => {
     const { authUser } = getState();
-    dispatch(toggleLikeTalkActionCreator({ talkId, userId: authUser.id }));
+    dispatch(toggleTalk({ talkId, userId: authUser.id }));
 
     try {
-      await api.toggleLikeTalk(talkId);
+      await API.toggleLikeTalk(talkId);
     } catch (error) {
       alert(error.message);
-      dispatch(toggleLikeTalkActionCreator({ talkId, userId: authUser.id }));
+      dispatch(toggleTalk({ talkId, userId: authUser.id }));
     }
   };
 }
 
 export {
   ActionType,
-  receiveTalksActionCreator,
-  addTalkActionCreator,
-  toggleLikeTalkActionCreator,
+  receiveTalks,
+  addTalk,
+  toggleTalk,
   asyncAddTalk,
   asyncToogleLikeTalk,
 };

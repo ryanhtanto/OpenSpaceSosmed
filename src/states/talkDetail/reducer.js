@@ -1,3 +1,6 @@
+/**
+ * @TODO: Define reducer for the talkDetail state
+ */
 import { ActionType } from './action';
 
 function talkDetailReducer(talkDetail = null, action = {}) {
